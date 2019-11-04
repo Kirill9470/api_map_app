@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-12" style="padding-bottom: 10px;">
+    <h3>Добавить новое здание</h3>
+    <%= simple_form_for Building.new,
+                        format: :json,
+                        remote: true,
+                        html: {id: 'buildings-tables', data: {url: buildings_path}} do |f| %>
+      <%= f.input :name, required: true, label: 'Название' %>
+      <%= f.input :address, required: true, label: 'Адрес' %>
+      <%= f.input :latitude, required: true, label: 'Широта' %>
+      <%= f.input :longitude,required: true, label: 'Долгота' %>
+      <%= link_to 'Добавить', '#', class: 'btn btn-default', id: 'add-building' %>
+    <% end %>
+  </div>
+</div>

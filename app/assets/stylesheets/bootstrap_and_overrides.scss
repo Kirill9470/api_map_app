@@ -1,0 +1,147 @@
+/*
+  =require bootstrap.min
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+
+
+.navbar-brand {
+    padding: 5px 15px;
+    height: 64px;
+}
+
+.navbar-brand:hover img {
+    opacity: .95;
+}
+
+.navbar-brand img {
+    height: 56px;
+}
+
+.navbar-nav>li>a {
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    font-size: 36px;
+}
+
+.jumbotron p {
+    font-size: 18px;
+}
+
+.bottom-15 {margin-bottom: 15px;}
+.bottom-30 {margin-bottom: 30px;}
+.bottom-45 {margin-bottom: 45px;}
+
+.jumbotron {
+    background-color: #ffffff;
+    border: 1px solid #efefef;
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,.03);
+}
+
+.dl-horizontal dt {
+    float: left;
+    width: 360px;
+    clear: left;
+    text-align: left;
+    white-space: inherit;
+}
+
+.list-group {
+    margin-bottom: 0;
+}
+
+.jstree-default .jstree-wholerow-clicked {
+    background: #f1f1f1!important;
+}
+
+.jstree-default .jstree-icon:empty {
+    color: #45526e;
+}
+
+.resizable.resizable1.ui-resizable {
+    border-right: 1px solid #ddd!important;
+    padding-right: 10px!important;
+}
+
+.jstree-default .jstree-wholerow-hovered {
+    background: #f4f4f4!important;
+}
+
+.no-padding-panel .content {
+    padding: 20px;
+}
+
+.resize-content {
+    background: #f9f9f9;
+}
+
+.no-padding-panel > .panel-body {
+    padding: 0;
+}
+
+.well.bs-component .jstree-default .jstree-wholerow-clicked,
+.well.bs-component .jstree-default .jstree-wholerow-hovered  {
+    background: #ddd!important;
+}
+
+.label-time-left {
+    background-color: #ac3911;
+    border-radius: 15px;
+    margin-top: 22px;
+    margin-right: 15px;
+    display: block;
+}
+
+/*.pull-right #region{*/
+    /*width: 200px;*/
+    /*margin-top: 6px;*/
+/*}*/
+/*#partner_table thead tr th a{*/
+    /*color: #333333;*/
+/*}*/
+/*#partner_table tbody tr td {*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+/*}*/
+/*#school_table td{*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*max-width: 150px;*/
+/*}*/
+/*#school_table tr th a{*/
+    /*color:#333333;*/
+/*}*/
+/*.pull-right{*/
+    /*display: inline-flex;*/
+/*}*/
+/*.navbar-form{*/
+    /*margin:0;*/
+/*}*/
+/*#role{*/
+    /*margin-top: 5px;*/
+    /*max-width: 150px;*/
+/*}*/
+
+/*#training_table td{*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*max-width: 150px;*/
+ /*}*/
+/*#training_table tr th a{*/
+    /*color:#333333;*/
+/*}*/
+/*#select_form{*/
+    /*margin-top: 6px;*/
+    /*width: 150px;*/
+/*}*/

@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    attributes:
+      building:
+        name: 'Название'
+        address: 'Адрес'
+        latitude: 'Широта'
+        longitude: 'Долгота'

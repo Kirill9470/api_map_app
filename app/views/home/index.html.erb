@@ -1,0 +1,17 @@
+<div class="row" style="background: #61D7A4">
+  <div class="col-md-12">
+    <h1>Какой-то сервис</h1>
+    <p>Тут будет красивое описание чего нибудь</p>
+  </div>
+</div>
+
+<div class="row">
+  <%= hidden_field_tag :map_settings, '', data: {coordinates: Building::INFO[:center_coordinates], zoom: Building::INFO[:zoom]} %>
+  <div id="map" class="cart-div"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'home/shared/table' %>
+  </div>
+</div>

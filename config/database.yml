@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  pool: 5
+  prepared_statements: false
+
+development:
+  <<: *default
+  database: map_user_base
+  username: map_user
+  password: mapuser
+
+test:
+  <<: *default
+  database: map_user_base
+  username: map_user
+  password: mapuser
+
+production:
+  <<: *default
+  database: map_user_base
+  username: map_user
+  password: mapuser

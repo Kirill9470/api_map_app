@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ApiCartApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=960cb057-bf0b-48ee-918f-e2bf63252d9c&lang=ru_RU" type="text/javascript"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+    <footer class="text-center" style="background: #007241">
+      <br>
+      <p>Какой-то сервис, версия: 0.0.1</p>
+      <br>
+    </footer>
+  </body>
+</html>
