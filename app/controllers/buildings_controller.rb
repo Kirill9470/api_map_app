@@ -2,7 +2,7 @@ class BuildingsController < ApplicationController
   before_action :set_building, except: [:index, :create]
 
   def index
-    @buildings = Building.filter_by_coordinates(params[:coordinates], params[:distanse])
+    @buildings = Building.filter_by_coordinates(params[:coordinates], params[:distance])
   end
 
   def create
@@ -11,17 +11,7 @@ class BuildingsController < ApplicationController
       if @building.save
         format.json {render json: {message: 'Здание успешно добавлено'}, status: :ok }
       else
-        format.json {render json: {data: @building.errors.full_messages.join("\n"), message: 'Ошибка'}, status: :unprocessable_entity}
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @building.update(building_params)
-        format.json {render json: {message: 'Здание успешно обновлено'}, status: :ok }
-      else
-        format.json {render json: {data: @building.errors.full_messages.join("\n"), message: 'Ошибка'}, status: :unprocessable_entity}
+        format.json {render json: {data: @building.errors.messages, message: 'Ошибка'}, status: :unprocessable_entity}
       end
     end
   end
@@ -36,7 +26,7 @@ class BuildingsController < ApplicationController
   private
 
   def building_params
-    params.require(:building).permit(:name, :address, :latitude, :longitude)
+    params.require(:building).permit(:house, :street)
   end
 
   def set_building

@@ -1,21 +1,28 @@
-<%- model_class = Building -%>
 <div class="row">
   <div class="col-md-12">
     <div class="row">
-      <div class="col-md-4">
-        <h3>Список зданий</h3>
-      </div>
       <div class="col-md-8">
-        <%= text_field_tag :distance, params[:distance], class: 'form-control' %>
+        <h3>Список зданий / адресов</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="row" style="margin-top: 20px">
+          <div class="col-md-4">
+            <%= text_field_tag :distance, params[:distance], class: 'form-control', placeholder: 'Радиус', id: 'radius' %>
+          </div>
+          <div class="col-md-8">
+            <%= link_to 'Добавить адрес', '#', class: 'btn btn-default create-address btn-block', data: {toggle: 'modal', target: '#myModal'} %>
+          </div>
+        </div>
       </div>
     </div>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <table class="table" id="buildings-tables" data-url="<%= buildings_path %>">
           <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col"><%= model_class.human_attribute_name(:address) %></th>
+            <th scope="col">Адрес</th>
             <th scope="col">Растояние, км</th>
             <th scope="col">Действия</th>
           </tr>
@@ -27,3 +34,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'home/shared/create_modal' %>

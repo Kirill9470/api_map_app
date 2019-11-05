@@ -12,7 +12,7 @@ module FilterByCoordinates
 
   module ClassMethods
     def filter_by_coordinates(coordinates, distance)
-      coordinates = INFO[:center_coordinates] if coordinates.blank? || coordinates.to_f.zero?
+      coordinates = INFO[:center_coordinates] if coordinates.blank?
       distance = INFO[:distance] if distance.blank?
       near(coordinates, distance, latitude: :latitude, longitude: :longitude).reorder(:distance)
     end

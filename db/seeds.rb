@@ -12,7 +12,7 @@ data = []
 50.times do
   first_rand = rand(Building::INFO[:center_coordinates][0] - 0.07..Building::INFO[:center_coordinates][0] + 0.07)
   two_rand = rand(Building::INFO[:center_coordinates][1] - 0.07..Building::INFO[:center_coordinates][1] + 0.07)
-  object = Geocoder.search([first_rand, two_rand], params: {kind: 'house', results: 100, lang: 'ru_RU', format: 'json'}).first
+  object = Geocoder.search([first_rand, two_rand], params: {kind: 'house', results: 1, lang: 'ru_RU', format: 'json'}).first
   address = object.data['GeoObject']['metaDataProperty']['GeocoderMetaData']['Address']['formatted']
   coordinate = object.data['GeoObject']['Point']['pos'].split(' ')
   p address

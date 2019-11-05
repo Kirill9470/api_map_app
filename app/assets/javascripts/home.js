@@ -5,31 +5,14 @@ $(document).ready(function () {
     let cartSettingsCoordinates = cartSettings.data('coordinates');
     let cartSettingsZoom = cartSettings.data('zoom');
 
-    $('#add-building').click(function () {
+    $('#submit-button').click(function (e) {
+        e.preventDefault();
         addBuilding()
     });
     ymaps.ready(function () {
         myMap = new ymaps.Map("map", {
             center: cartSettingsCoordinates,
             zoom: cartSettingsZoom
-        });
-
-        myMap.events.add('click', function (e) {
-        if (!myMap.balloon.isOpen()) {
-            var coords = e.get('coords');
-            myMap.balloon.open(coords, {
-                contentHeader:'Событие!',
-                contentBody:'<p>Кто-то щелкнул по карте.</p>' +
-                    '<p>Координаты щелчка: ' + [
-                        coords[0].toPrecision(8),
-                        coords[1].toPrecision(8)
-                    ].join(', ') + '</p>',
-                contentFooter:'<sup>Щелкните еще раз</sup>'
-            });
-        }
-        else {
-            myMap.balloon.close();
-        }
         });
 
         myMap.events.add('click', function (e) {
@@ -53,12 +36,16 @@ function addStick(data) {
 }
 
 function getBuildings(myMap = null, coords = null) {
-    
+
     let $form = $('#buildings-tables');
     $.ajax({
         url: $form.data('url'),
         type: 'GET',
         dataType: 'json',
+        data: {
+            coordinates: coords,
+            distance: $('#radius').val()
+        },
         success: function (data, request) {
             if (request === 'success') {
                 reloadTable(data);
@@ -83,9 +70,6 @@ function reloadTable(data) {
                 '<td>' + item["address"] + '</td>' +
                 '<td>' + item["distance"] + '</td>' +
                 '<td  data-url="' + item["url"] + '">' +
-                '<span title="Редактировать" ' +
-                'class="glyphicon glyphicon-pencil text-warning" ' +
-                'aria-hidden="true"></span>' +
                 '<span title="Удалить" class="glyphicon glyphicon-remove text-danger" onclick="destroyBuilding(this)" aria-hidden="true"></span>' +
                 '</td>' +
                 '</tr>')
@@ -100,20 +84,35 @@ function reloadTable(data) {
 
 function addBuilding() {
     let $form = $('#building-form');
+    let snake_model = $form.data('model');
+    $form.find('.error').remove();
+    $form.find('input').removeClass('input-error');
+    $form.find('label').removeClass('title-error');
     $.ajax({
-        url: $form.data('url'),
+        url: $form.attr('action'),
         type: 'POST',
         dataType: 'json',
         data: $form.serialize(),
         success: function (data, request) {
             console.log(data);
             if (request === 'success') {
-                getBuildings();
+                $form.find('.close').click();
+                $form.find('input').val('');
                 $.bootstrapGrowl(data['message'], {type: 'success'});
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            $.bootstrapGrowl(jqXHR['responseJSON']['data'], {type: 'danger'});
+            let errors = jqXHR['responseJSON']['data'];
+            $.each(errors, function (key, value) {
+                let labelName = snake_model + '_' + key;
+                let inputWithError = $('[name="' + snake_model + '[' + key + ']"]');
+                let labelElement = '<label for="' + labelName + '" class="error">' + value.slice(',')[0] + '</label>';  // Создаем label
+
+                inputWithError.after(labelElement);
+                inputWithError.addClass('input-error');
+                let redLabels = $('label' + '[for="' + labelName + '"]');
+                redLabels.addClass('title-error');
+            });
         }
 
     });
