@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Конфигурация
 
-Things you may want to cover:
+* Ruby version - 2.4.1
+* Rails version - 5.2.3
 
-* Ruby version
+База данных
+* PostgreSql - version 11.5
+* database: map_user_base
+* username: map_user
+* password: mapuser
 
-* System dependencies
+Настройки
 
-* Configuration
+* bundle install
+* Создать базу данных и пользователя
+* rails db:seed - Запускаем сиды и генерируем базу данных
+* bundle exec rspec - тесты
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
